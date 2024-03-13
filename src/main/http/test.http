@@ -1,0 +1,27 @@
+
+### HTTP request 요청 인입 시 쓰레드에서 처리
+GET {{api}}/test
+
+### HTTP request 요청 인입 시 쓰레드에서 코루틴 생성 확인 (쓰레드풀 3개)
+GET {{api}}/test1
+
+### HTTP request -> controller -> service 흐름 시 코루틴은 어떻게 처리되나?
+GET {{api}}/test2
+
+### HTTP request -> controller -> service 로직에서 1개의 외부 API를 호출해 본다.
+GET {{api}}/test3
+
+### HTTP request -> controller -> service 로직에서 2개의 외부 API를 호출해 본다.
+GET {{api}}/test4
+
+### 외부 api 순차적으로 호출 처리
+GET {{api}}/process1
+
+### 외부 api 비동기로 호출 후 처리
+GET {{api}}/process2
+
+### process test
+GET {{api}}/process3
+
+### users
+GET {{api}}/accounts
