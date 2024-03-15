@@ -1,0 +1,22 @@
+
+### accounts
+GET {{api}}/accounts
+Content-Type: application/json
+
+### insert
+POST {{api}}/accounts
+Content-Type: application/json
+
+{
+  "name": "testName",
+  "email": "test100@test.com"
+}
+
+### update
+PUT {{api}}/accounts/1
+Content-Type: application/json
+
+{
+  "name": "newName",
+  "email": "new@test.com"
+}

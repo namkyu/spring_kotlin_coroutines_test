@@ -14,6 +14,26 @@ GET {{api}}/test3
 ### HTTP request -> controller -> service 로직에서 2개의 외부 API를 호출해 본다.
 GET {{api}}/test4
 
+### HTTP request -> controller -> service 로직에서 3개의 외부 API를 호출해 본다.
+GET {{api}}/test5
+
+### HTTP request -> controller -> service 로직에서 새로운 코루틴 scope 생성 후 1개의 외부 API를 호출해 본다.
+GET {{api}}/test6
+
+### HTTP request -> controller -> service 로직에서 새로운 코루틴 scope 생성 후 2개의 외부 API를 호출해 본다.
+GET {{api}}/test7
+
+### HTTP request -> controller -> service 로직에서 새로운 코루틴 scope 생성 후 async로 3개의 외부 API를 호출해 본다.
+GET {{api}}/test8
+
+### HTTP request -> controller -> service 로직에서 새로운 코루틴 scope 생성 후 async로 3개의 외부 API를 호출해 본다.
+GET {{api}}/test88
+
+### HTTP request -> controller -> service 로직에서 새로운 코루틴 scope 생성 후 launch로 3개의 외부 API를 호출해 본다.
+GET {{api}}/test9
+
+
+
 ### 외부 api 순차적으로 호출 처리
 GET {{api}}/process1
 

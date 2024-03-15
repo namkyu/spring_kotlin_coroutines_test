@@ -1,20 +1,74 @@
 
 server:
+  port: 443
+  ssl:
+    enabled: true
+    key-store: classpath:bootsecurity.p12
+    key-store-password: 123456
+    key-store-type: PKCS12
+    key-alias: bootsecurity
   tomcat:
+    uri-encoding: UTF-8 # Character encoding to use to decode the URI.
+    connection-timeout: 10s
+    use-relative-redirects: true
     threads:
-      max: 5
-  port: 8080
+      max: 3
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+  servlet:
+    session:
+      tracking-modes: cookie
+  error:
+    whitelabel:
+      enabled: false
+    include-exception: false
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+    path: /error
 
 spring:
   r2dbc:
-    url: r2dbc:h2:mem:///test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password:
+    pool:
+      enabled: true
+      initial-size: 5
+      max-size: 10
+      max-idle-time: 30m
+      validation-query: SELECT 1
   jpa:
     hibernate:
       ddl-auto: none
   sql:
     init:
-      schema-locations: classpath:schema.sql
-      data-locations: classpath:data.sql
+      schema-locations: classpath:sql/schema.sql
+      data-locations: classpath:sql/data.sql
       mode: always
+  h2:
+    console:
+      path: /h2-console # https://localhost/h2-console
+      enabled: true
+  devtools: # classpath 파일 변경 시 자동 재시작, 정적 자원 새로고침 없이 바로 적용
+    livereload:
+      enabled: false # local 에서만 true
+  output:
+    ansi:
+      enabled: always
+  jackson:
+    property-naming-strategy: SNAKE_CASE # client 에서 user_name 필드로 보내주면 Dto 클래스의 userName 필드에 맵핑
+  web:
+    resources:
+      static-locations: classpath:/static/
+      chain:
+        strategy:
+          content:
+            enabled: true # 정적 자원 versioning, 정작 파일을 수정해야 versioning 해쉬값이 바뀐다.
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+  security:
+    user:
+      password: 112233

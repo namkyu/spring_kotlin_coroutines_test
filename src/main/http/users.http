@@ -1,0 +1,57 @@
+
+### 회원 가입
+POST {{api}}/users/register
+Content-Type: application/json
+
+{
+  "userName": "hong",
+  "email": "hong@test.com"
+}
+
+### 회원 가입 (좀 더 빠르게 처리)
+POST {{api}}/users/register2
+Content-Type: application/json
+
+{
+  "userName": "hong",
+  "email": "hong@test.com"
+}
+
+### 구매 진행
+POST {{api}}/purchase
+Content-Type: application/json
+
+{
+  "goodsId": "1234",
+  "quantity": 2,
+  "userId": "hong"
+}
+
+### 구매 진행1
+POST {{api}}/purchase1
+Content-Type: application/json
+
+{
+  "goodsId": "1234",
+  "quantity": 2,
+  "userId": "hong"
+}
+
+### 구매 이력
+GET {{api}}/purchaseHistory?userId=hong
+Content-Type: application/json
+
+
+### 회원 검색
+GET {{api}}/users
+Content-Type: application/json
+
+
+### 예외 강제 발생 1
+GET {{api}}/users/occursException
+Content-Type: application/json
+
+
+### 예외 강제 발생 2
+GET {{api}}/users/occursException2
+Content-Type: application/json
